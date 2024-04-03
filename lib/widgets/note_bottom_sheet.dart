@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noota/widgets/custom_button.dart';
 import 'package:noota/widgets/custom_text_field.dart';
 
 class AddNote extends StatelessWidget {
@@ -10,13 +11,31 @@ class AddNote extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
       ),
-      child: const Column(
-        children: [
-          SizedBox(
-            height: 32,
-          ),
-          CustomTextField(),
-        ],
+      child: SingleChildScrollView(
+        child: const Column(
+          children: [
+            SizedBox(
+              height: 32,
+            ),
+            CustomTextField(
+              hint: 'Title',
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            CustomTextField(
+              hint: 'Content',
+              maxLines: 5,
+            ),
+            SizedBox(
+              height: 32,
+            ),
+            CustomButton(),
+            SizedBox(
+              height: 16,
+            ),
+          ],
+        ),
       ),
     );
   }
