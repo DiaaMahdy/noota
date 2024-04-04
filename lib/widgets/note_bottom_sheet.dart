@@ -7,12 +7,12 @@ class AddNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
+    return const Padding(
+      padding: EdgeInsets.symmetric(
         horizontal: 16,
       ),
       child: SingleChildScrollView(
-        child: const Column(
+        child: Column(
           children: [
             SizedBox(
               height: 32,
