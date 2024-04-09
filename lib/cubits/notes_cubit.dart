@@ -7,15 +7,15 @@ import 'package:noota/models/note_model.dart';
 part 'notes_state.dart';
 
 class NotesCubit extends Cubit<AddNoteState> {
-  NotesCubit(super.initialState);
+  NotesCubit() : super(AddNoteInitial());
   addNote(NoteModel note) async {
     emit(AddNoteLoading());
     try {
       var notesBox = Hive.box<NoteModel>(kNotesBox);
-      emit(AddNoteSuccess());
       await notesBox.add(note);
+      emit(AddNoteSuccess());
     } catch (e) {
-      AddNoteFailure(e.toString());
+      emit(AddNoteFailure(e.toString()));
     }
   }
 }
