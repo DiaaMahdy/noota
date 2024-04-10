@@ -13,9 +13,10 @@ class AddNote extends StatelessWidget {
     return BlocProvider(
       create: (context) => NotesCubit(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-        ),
+        padding: EdgeInsets.only(
+            left: 16,
+            right: 16,
+            bottom: MediaQuery.of(context).viewInsets.bottom),
         child: SingleChildScrollView(
           child: BlocConsumer<NotesCubit, AddNoteState>(
             listener: (context, state) {
@@ -27,7 +28,9 @@ class AddNote extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return const AddNoteForm();
+              return AbsorbPointer(
+                  absorbing: state is AddNoteLoading ? true : false,
+                  child: const AddNoteForm());
             },
           ),
         ),
