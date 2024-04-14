@@ -4,3 +4,5 @@ part of 'read_notes_cubit.dart';
 abstract class ReadNoteState {}
 
 class ReadNoteInitial extends ReadNoteState {}
+
+class NotesSuccess extends ReadNoteState {}

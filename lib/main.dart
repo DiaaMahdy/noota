@@ -6,6 +6,8 @@ import 'package:noota/models/note_model.dart';
 import 'package:noota/simple_bloc_observer.dart';
 import 'package:noota/views/notes_view.dart';
 
+import 'cubits/read_notes_cubit/read_notes_cubit.dart';
+
 void main() async {
   await Hive.initFlutter();
   Bloc.observer = SimpleBlocObserver();
@@ -20,13 +22,16 @@ class Noota extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        fontFamily: 'Poppins',
+    return BlocProvider(
+      create: (context) => ReadNotesCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          fontFamily: 'Poppins',
+        ),
+        home: const NotesView(),
       ),
-      home: const NotesView(),
     );
   }
 }
